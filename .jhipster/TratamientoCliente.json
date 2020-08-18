@@ -1,0 +1,54 @@
+{
+    "name": "TratamientoCliente",
+    "fields": [
+        {
+            "fieldName": "numSesiones",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "diagnostico",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "precioSesion",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "expediente",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "cita",
+            "otherEntityRelationshipName": "tratamientoCliente",
+            "relationshipName": "cita"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tratamiento",
+            "otherEntityRelationshipName": "tratamientoCliente",
+            "relationshipName": "tratamiento",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "cliente",
+            "otherEntityRelationshipName": "tratamientoCliente",
+            "relationshipName": "cliente",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200808101400",
+    "entityTableName": "tratamiento_cliente",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

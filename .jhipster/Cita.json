@@ -1,0 +1,37 @@
+{
+    "name": "Cita",
+    "fields": [
+        {
+            "fieldName": "fechaHoraCita",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fechaHoraCitaFin",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "comentarios",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tratamientoCliente",
+            "otherEntityRelationshipName": "cita",
+            "relationshipName": "tratamientoCliente",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200808101300",
+    "entityTableName": "cita",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

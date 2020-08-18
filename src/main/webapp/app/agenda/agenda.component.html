@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="col-12">
+            <h2 id="jhi-cita-heading" *ngIf="cliente != null">
+                <span jhiTranslate="iFisioApp.agenda.agenda" class="font-bold">Agenda</span>
+                {{cliente?.nombre}} {{cliente?.apellidos}}
+            </h2>
+            <h2 id="jhi-cita-heading" class="font-bold" jhiTranslate="iFisioApp.agenda.title" *ngIf="cliente == null">
+                Agenda
+            </h2>
+        </div>
+        <!-- <jhi-alert-error></jhi-alert-error> -->
+    </div>
+</div>
+<div class="p-grid" *ngIf="modeSel === 'timeGrid'">
+    <div class="p-col-2">
+        <label for="id" jhiTranslate="iFisioApp.agenda.tratamiento">Tratamiento</label>
+    </div>
+
+    <div class="p-col-2">
+        <p-dropdown [options]="tratamientosClientes" [(ngModel)]="tratamientoSel" (onChange)="calcuteDays()">
+        </p-dropdown>
+    </div>
+    <div class="p-col-2" *ngIf="tratamientoSel?.id != null">
+        <label for="id" jhiTranslate="iFisioApp.agenda.numDias">Numero días</label>
+    </div>
+    <div class="p-col-2" *ngIf="tratamientoSel?.id != null">
+        {{numDiasPendientes}}
+    </div>
+</div>
+<p-fullCalendar #fc [events]="events" [options]="options"></p-fullCalendar>

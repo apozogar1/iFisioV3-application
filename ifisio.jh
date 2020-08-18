@@ -1,0 +1,46 @@
+
+entity Medicion {
+	peso Float,
+    altura Float,
+    fechaMedicion Instant
+}
+
+entity Cliente {
+	nombre String,
+    apellidos String,
+    telefono String,
+    fechaNacimiento Instant 
+}
+
+entity Companya {
+	nombre String,
+    precioSesion Float
+}
+
+entity Cita {
+	fechaHoraCita Instant,
+	fechaHoraCitaFin Instant,
+    comentarios String
+}
+
+entity TratamientoCliente {
+    numSesiones Long,
+    diagnostico String,
+    precioSesion Float,
+    expediente String
+}
+
+entity Tratamiento {
+	nombre String,
+    numSesiones Long
+}
+
+relationship OneToMany {
+	Cliente to Medicion{cliente},
+    Tratamiento to TratamientoCliente{tratamiento},
+    Companya to Cliente{companya},
+    Cliente to TratamientoCliente{cliente},
+    TratamientoCliente to Cita{tratamientoCliente}
+}
+
+paginate * with infinite-scroll

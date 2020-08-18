@@ -1,0 +1,96 @@
+<div>
+
+    <h2 id="page-heading">
+
+        <span class="ui-float-label">
+            <input id="float-input" type="text" [(ngModel)]="filtro" (keyup)="filtroCliente()" pInputText>
+            <label for="float-input">Username</label>
+
+
+            <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-cliente"
+                [routerLink]="['/clientes/cliente/new']">
+                <fa-icon icon="plus"></fa-icon>
+                <span jhiTranslate="iFisioApp.cliente.home.createLabel">
+                    Create a new Cliente
+                </span>
+            </button>
+
+        </span>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+
+    <div class="table-responsive" id="entities">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col" jhiSortBy="nombre"><span jhiTranslate="iFisioApp.tablaCliente.nombre">Nombre</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="apellidos"><span
+                            jhiTranslate="iFisioApp.tablaCliente.apellidos">Apellidos</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col">
+                        <span jhiTranslate="iFisioApp.tablaCliente.companyia">Compañia</span>
+                    </th>
+                    <th scope="col">
+                        <span jhiTranslate="iFisioApp.tablaCliente.activo">
+                            Activo
+                        </span>
+                        <input type="checkbox" [(ngModel)]="estaActivo" (ngModelChange)="filtroActivo()" />
+                    </th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']"
+                [infiniteScrollDistance]="0">
+                <tr *ngFor="let cliente of clientes ;trackBy: trackId">
+                    <td>{{ cliente.nombre }}</td>
+                    <td>{{ cliente.apellidos }}</td>
+                    <td>
+                        <span *ngFor="let numDoc of cliente.numDocs"
+                            style="margin-left: 2px; border: 1px solid; background-color: red;">
+                            {{numDoc.companya?.nombre}}
+                        </span>
+                    </td>
+                    <td>
+                        <span *ngFor="let numDocs of cliente.numDocs">
+                            <span *ngFor="let tratamientoClientes of numDocs.tratamientoClientes">
+                                {{tratamientoClientes?.numSesionesDisfrutadas}}/{{tratamientoClientes?.numSesiones}}
+                            </span>
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+
+                            <button type="submit" [routerLink]="['/agenda', cliente.id]" class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline"
+                                    jhiTranslate="iFisioApp.tablaCliente.citas">Citas</span>
+                            </button>
+
+                            <button type="submit" [routerLink]="['/clientes/cliente', cliente.id]"
+                                class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(cliente)" class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="alert alert-warning" id="no-result" *ngIf="clientes?.length === 0">
+            <span jhiTranslate="iFisioApp.cliente.home.notFound">No clientes found</span>
+        </div>
+    </div>
+</div>

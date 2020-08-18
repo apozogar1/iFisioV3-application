@@ -1,0 +1,17 @@
+{
+  "iFisioApp": {
+    "agenda": {
+      "title": "Agenda",
+      "agenda": "Agenda:",
+      "modo": "Modo",
+      "tratamiento": "Tratamiento",
+      "numDias": "Numero citas pendientes",
+      "informacionCita": "Información cita",
+      "nombre": "Nombre",
+      "fecha": "Fecha/Hora",
+      "comentarios": "Comentarios",
+      "eliminar": "Eliminar",
+      "guardar": "Guardar"
+    }
+  }
+}
