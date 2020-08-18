@@ -52,16 +52,11 @@
                     <td>{{ cliente.nombre }}</td>
                     <td>{{ cliente.apellidos }}</td>
                     <td>
-                        <span *ngFor="let numDoc of cliente.numDocs"
-                            style="margin-left: 2px; border: 1px solid; background-color: red;">
-                            {{numDoc.companya?.nombre}}
-                        </span>
+                        {{cliente.companya?.nombre}}
                     </td>
                     <td>
-                        <span *ngFor="let numDocs of cliente.numDocs">
-                            <span *ngFor="let tratamientoClientes of numDocs.tratamientoClientes">
-                                {{tratamientoClientes?.numSesionesDisfrutadas}}/{{tratamientoClientes?.numSesiones}}
-                            </span>
+                        <span *ngFor="let tratamientoClientes of cliente.tratamientoClientes">
+                            {{tratamientoClientes?.numSesionesDisfrutadas}}/{{tratamientoClientes?.numSesiones}}
                         </span>
                     </td>
                     <td class="text-right">

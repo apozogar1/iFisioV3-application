@@ -35,7 +35,7 @@ export class AgendaComponent implements OnInit, OnDestroy {
   modalCita = false;
   numDiasPendientes: any = 10;
 
-  modeSel: String = 'timeGridWeek';
+  modeSel: String = 'timeGrid';
 
   tratamientoSel: ITratamientoCliente = {};
   tratamientosClientes: SelectItem[] = [
@@ -173,7 +173,7 @@ export class AgendaComponent implements OnInit, OnDestroy {
   private mapCitaToEvent(cita: ICita | undefined): { id: number | undefined; title: string; start: string | moment.Moment | undefined; end: string | moment.Moment | undefined; } {
     return {
       id: cita?.id,
-      title: Utils.formatName(cita?.tratamientoCliente?.numDoc?.cliente?.nombre, cita?.tratamientoCliente?.numDoc?.cliente?.apellidos) + ' - ' + cita?.tratamientoCliente?.diagnostico,
+      title: Utils.formatName(cita?.tratamientoCliente?.cliente?.nombre, cita?.tratamientoCliente?.cliente?.apellidos) + ' - ' + cita?.tratamientoCliente?.diagnostico,
       start: cita?.fechaHoraCita instanceof moment ? cita?.fechaHoraCita.format() : cita?.fechaHoraCita,
       end: cita?.fechaHoraCitaFin instanceof moment ? cita?.fechaHoraCitaFin.format() : cita?.fechaHoraCitaFin
     };

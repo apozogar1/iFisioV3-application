@@ -5,6 +5,7 @@ export interface IMedicion {
   id?: number;
   peso?: number;
   altura?: number;
+  imc?: number;
   fechaMedicion?: Moment;
   cliente?: ICliente;
 }

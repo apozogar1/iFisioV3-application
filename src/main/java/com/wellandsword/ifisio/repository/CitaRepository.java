@@ -10,9 +10,8 @@ import com.wellandsword.ifisio.domain.Cita;
 /**
  * Spring Data repository for the Cita entity.
  */
-@SuppressWarnings("unused")
 @Repository
 public interface CitaRepository extends JpaRepository<Cita, Long> {
 
-	List<Cita> findByTratamientoClienteNumDocClienteId(Long id);
+	List<Cita> findByTratamientoClienteClienteId(Long id);
 }

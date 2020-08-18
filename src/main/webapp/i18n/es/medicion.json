@@ -19,7 +19,8 @@
       "peso": "Peso",
       "altura": "Altura",
       "fechaMedicion": "Fecha Medicion",
-      "cliente": "Cliente"
+      "cliente": "Cliente",
+      "imc": "IMC"
     }
   }
 }

@@ -107,16 +107,16 @@ export class TablaClienteComponent implements OnInit, OnDestroy {
     if (data) {
       for (let i = 0; i < data.length; i++) {
         const cliente = data[i];
-        cliente.numDocs?.forEach(numDoc =>
-          numDoc.tratamientoClientes?.forEach(tratamientosCLientes => {
+        cliente.tratamientoClientes?.forEach(tratamientosCLientes => {
+          if (tratamientosCLientes != null) {
             tratamientosCLientes.numSesionesDisfrutadas = 0;
             tratamientosCLientes.citas?.forEach(cita => {
               if (moment(new Date()).isAfter(cita.fechaHoraCita) && tratamientosCLientes.numSesionesDisfrutadas != null) {
                 tratamientosCLientes.numSesionesDisfrutadas++;
               }
             });
-          })
-        );
+          }
+        })
         this.clientes.push(cliente);
       }
     }
@@ -126,9 +126,7 @@ export class TablaClienteComponent implements OnInit, OnDestroy {
   filtroCliente(): void {
     const tablaFiltrada = this.clientesNoFilter.filter(
       cliente =>
-        // this.compareFilter(cliente.nombre, this.filtro) ||
-        this.compareFilter(cliente.apellidos, this.filtro) ||
-        cliente.numDocs?.find(numDoc => this.compareFilter(numDoc.companya?.nombre, this.filtro))
+        this.compareFilter(cliente.apellidos, this.filtro)
     );
     this.clientes = tablaFiltrada;
   }
@@ -137,13 +135,11 @@ export class TablaClienteComponent implements OnInit, OnDestroy {
     if (this.estaActivo) {
       this.clientes = this.clientesNoFilter.filter(cliente => {
         let estaActivo = false;
-        cliente?.numDocs?.forEach(numDoc =>
-          numDoc?.tratamientoClientes?.forEach((aux: any) => {
-            if (aux?.numSesiones > aux?.numSesionesDisfrutadas) {
-              estaActivo = true;
-            }
-          })
-        );
+        cliente?.tratamientoClientes?.forEach((aux: any) => {
+          if (aux?.numSesiones > aux?.numSesionesDisfrutadas) {
+            estaActivo = true;
+          }
+        })
         return estaActivo;
       });
     } else {

@@ -113,6 +113,15 @@ public class MedicionResource {
 		return ResponseEntity.ok().headers(headers).body(page.getContent());
 	}
 
+	@GetMapping("/medicions/cliente/{id}")
+	public ResponseEntity<List<Medicion>> getByClienteMedicions(@PathVariable Long id, Pageable pageable) {
+		log.debug("REST request to get a page of Medicions");
+		Page<Medicion> page = medicionRepository.findByClienteId(id, pageable);
+		HttpHeaders headers = PaginationUtil
+				.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+		return ResponseEntity.ok().headers(headers).body(page.getContent());
+	}
+
 	/**
 	 * {@code GET  /medicions/:id} : get the "id" medicion.
 	 *

@@ -1,7 +1,8 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-tratamiento-cliente-heading" jhiTranslate="iFisioApp.tratamientoCliente.home.createOrEditLabel">Create or edit a Tratamiento Cliente</h2>
+            <h2 id="jhi-tratamiento-cliente-heading" jhiTranslate="iFisioApp.tratamientoCliente.home.createOrEditLabel">
+                Create or edit a Tratamiento Cliente</h2>
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
@@ -12,42 +13,55 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="iFisioApp.tratamientoCliente.numSesiones" for="field_numSesiones">Num Sesiones</label>
+                    <label class="form-control-label" jhiTranslate="iFisioApp.tratamientoCliente.numSesiones"
+                        for="field_numSesiones">Num Sesiones</label>
                     <input type="number" class="form-control" name="numSesiones" id="field_numSesiones"
-                           formControlName="numSesiones"/>
+                        formControlName="numSesiones" />
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="iFisioApp.tratamientoCliente.diagnostico" for="field_diagnostico">Diagnostico</label>
+                    <label class="form-control-label" jhiTranslate="iFisioApp.tratamientoCliente.diagnostico"
+                        for="field_diagnostico">Diagnostico</label>
                     <input type="text" class="form-control" name="diagnostico" id="field_diagnostico"
-                           formControlName="diagnostico"/>
+                        formControlName="diagnostico" />
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="iFisioApp.tratamientoCliente.precioSesion" for="field_precioSesion">Precio Sesion</label>
+                    <label class="form-control-label" jhiTranslate="iFisioApp.tratamientoCliente.precioSesion"
+                        for="field_precioSesion">Precio Sesion</label>
                     <input type="number" class="form-control" name="precioSesion" id="field_precioSesion"
-                           formControlName="precioSesion"/>
+                        formControlName="precioSesion" />
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="iFisioApp.tratamientoCliente.expediente" for="field_expediente">Expediente</label>
+                    <label class="form-control-label" jhiTranslate="iFisioApp.tratamientoCliente.expediente"
+                        for="field_expediente">Expediente</label>
                     <input type="text" class="form-control" name="expediente" id="field_expediente"
-                           formControlName="expediente"/>
+                        formControlName="expediente" />
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="iFisioApp.tratamientoCliente.tratamiento" for="field_tratamiento">Tratamiento</label>
-                    <select class="form-control" id="field_tratamiento" name="tratamiento" formControlName="tratamiento">
+                    <label class="form-control-label" jhiTranslate="iFisioApp.tratamientoCliente.tratamiento"
+                        for="field_tratamiento">Tratamiento</label>
+                    <select class="form-control" id="field_tratamiento" name="tratamiento"
+                        formControlName="tratamiento">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="tratamientoOption.id === editForm.get('tratamiento')!.value?.id ? editForm.get('tratamiento')!.value : tratamientoOption" *ngFor="let tratamientoOption of tratamientos; trackBy: trackById">{{ tratamientoOption.id }}</option>
+                        <option
+                            [ngValue]="tratamientoOption.id === editForm.get('tratamiento')!.value?.id ? editForm.get('tratamiento')!.value : tratamientoOption"
+                            *ngFor="let tratamientoOption of tratamientos; trackBy: trackById">
+                            {{ tratamientoOption.nombre }}</option>
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="iFisioApp.tratamientoCliente.cliente" for="field_cliente">Cliente</label>
+                <div class="form-group" hidden>
+                    <label class="form-control-label" jhiTranslate="iFisioApp.tratamientoCliente.cliente"
+                        for="field_cliente">Cliente</label>
                     <select class="form-control" id="field_cliente" name="cliente" formControlName="cliente">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="clienteOption.id === editForm.get('cliente')!.value?.id ? editForm.get('cliente')!.value : clienteOption" *ngFor="let clienteOption of clientes; trackBy: trackById">{{ clienteOption.id }}</option>
+                        <option
+                            [ngValue]="clienteOption.id === editForm.get('cliente')!.value?.id ? editForm.get('cliente')!.value : clienteOption"
+                            *ngFor="let clienteOption of clientes; trackBy: trackById">{{ clienteOption.nombre }}
+                        </option>
                     </select>
                 </div>
             </div>
@@ -57,7 +71,8 @@
                     <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
 
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
+                    class="btn btn-primary">
                     <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>

@@ -124,6 +124,21 @@ public class TratamientoClienteResource {
 	 * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
 	 *         the tratamientoCliente, or with status {@code 404 (Not Found)}.
 	 */
+	@GetMapping("/tratamiento-clientes/cliente/{id}")
+	public ResponseEntity<List<TratamientoCliente>> getTratamientoClienteByCliente(@PathVariable Long id,
+			Pageable pageable) {
+		log.debug("REST request to get TratamientoCliente : {}", id);
+		List<TratamientoCliente> list = tratamientoClienteRepository.findByClienteId(id);
+		return ResponseEntity.ok().body(list);
+	}
+
+	/**
+	 * {@code GET  /tratamiento-clientes/:id} : get the "id" tratamientoCliente.
+	 *
+	 * @param id the id of the tratamientoCliente to retrieve.
+	 * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
+	 *         the tratamientoCliente, or with status {@code 404 (Not Found)}.
+	 */
 	@GetMapping("/tratamiento-clientes/{id}")
 	public ResponseEntity<TratamientoCliente> getTratamientoCliente(@PathVariable Long id) {
 		log.debug("REST request to get TratamientoCliente : {}", id);

@@ -4,6 +4,7 @@ export interface ITratamiento {
   id?: number;
   nombre?: string;
   numSesiones?: number;
+  numSesionesDisfrutadas?: number;
   tratamientoClientes?: ITratamientoCliente[];
 }
 
@@ -12,6 +13,7 @@ export class Tratamiento implements ITratamiento {
     public id?: number,
     public nombre?: string,
     public numSesiones?: number,
+    public numSesionesDisfrutadas?: number,
     public tratamientoClientes?: ITratamientoCliente[]
   ) {}
 }
