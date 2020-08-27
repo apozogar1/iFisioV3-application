@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, Routes } from '@angular/router';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { Authority } from 'app/shared/constants/authority.constants';
+import { Cliente } from 'app/shared/model/cliente.model';
 import { ITratamientoCliente, TratamientoCliente } from 'app/shared/model/tratamiento-cliente.model';
 import { EMPTY, Observable, of } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
@@ -12,10 +13,11 @@ import { TratamientoClienteService } from './tratamiento-cliente.service';
 
 @Injectable({ providedIn: 'root' })
 export class TratamientoClienteResolve implements Resolve<ITratamientoCliente> {
-  constructor(private service: TratamientoClienteService, private router: Router) {}
+  constructor(private service: TratamientoClienteService, private router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot): Observable<ITratamientoCliente> | Observable<never> {
     const id = route.params['id'];
+    const idCliente = route.params['idCliente'];
     if (id) {
       return this.service.find(id).pipe(
         flatMap((tratamientoCliente: HttpResponse<TratamientoCliente>) => {
@@ -28,7 +30,12 @@ export class TratamientoClienteResolve implements Resolve<ITratamientoCliente> {
         })
       );
     }
-    return of(new TratamientoCliente());
+    const tratamientoCliente = new TratamientoCliente();
+    tratamientoCliente.cliente = new Cliente();
+    if (tratamientoCliente.cliente != null) {
+      tratamientoCliente.cliente.id = idCliente;
+    }
+    return of(tratamientoCliente);
   }
 }
 

@@ -8,6 +8,7 @@ import { JhiEventManager, JhiParseLinks } from 'ng-jhipster';
 import { Subscription } from 'rxjs';
 import { TratamientoClienteDeleteDialogComponent } from './tratamiento-cliente-delete-dialog.component';
 import { TratamientoClienteService } from './tratamiento-cliente.service';
+import { ICliente } from 'app/shared/model/cliente.model';
 
 
 
@@ -23,6 +24,7 @@ export class TratamientoClienteComponent implements OnInit, OnDestroy {
   page: number;
   predicate: string;
   ascending: boolean;
+  cliente: ICliente;
 
   constructor(
     protected tratamientoClienteService: TratamientoClienteService,
@@ -32,6 +34,7 @@ export class TratamientoClienteComponent implements OnInit, OnDestroy {
     protected activatedRoute: ActivatedRoute
   ) {
     this.tratamientoClientes = [];
+    this.cliente = {};
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.page = 0;
     this.links = {
@@ -44,6 +47,7 @@ export class TratamientoClienteComponent implements OnInit, OnDestroy {
   loadAll(): void {
     this.activatedRoute.data.subscribe(({ cliente }) => {
       if (cliente != null && cliente.id != null) {
+        this.cliente = cliente;
         this.tratamientoClienteService
           .findByCliente(cliente.id)
           .subscribe((res: HttpResponse<ITratamientoCliente[]>) => {
