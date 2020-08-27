@@ -14,4 +14,5 @@ import com.wellandsword.ifisio.domain.Cita;
 public interface CitaRepository extends JpaRepository<Cita, Long> {
 
 	List<Cita> findByTratamientoClienteClienteId(Long id);
+	
 }

@@ -53,10 +53,12 @@
                 <tr *ngFor="let tratamientoCliente of tratamientoClientes ;trackBy: trackId">
                     <!-- <td><a [routerLink]="['/tratamiento-cliente', tratamientoCliente.id, 'view']">{{ tratamientoCliente.id }}</a></td> -->
                     <td>
-                        <div *ngIf="tratamientoCliente.tratamiento">
+                        <!-- <div *ngIf="tratamientoCliente.tratamiento">
                             <a
-                                [routerLink]="['/tratamiento', tratamientoCliente.tratamiento?.id, 'view']">{{ tratamientoCliente.tratamiento?.nombre }}</a>
-                        </div>
+                                [routerLink]="['/tratamiento', tratamientoCliente.tratamiento?.id, 'view']"> -->
+                        {{ tratamientoCliente.tratamiento?.nombre }}
+                        <!-- </a>
+                        </div> -->
                     </td>
                     <td>{{ tratamientoCliente.diagnostico }}</td>
                     <td>{{ tratamientoCliente.numSesiones }}</td>

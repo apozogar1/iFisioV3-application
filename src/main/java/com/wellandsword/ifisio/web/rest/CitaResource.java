@@ -128,6 +128,20 @@ public class CitaResource {
 	}
 
 	/**
+	 * {@code GET  /citas/:id} : get the "id" cita.
+	 *
+	 * @param id the id of the cita to retrieve.
+	 * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
+	 *         the cita, or with status {@code 404 (Not Found)}.
+	 */
+	@GetMapping("/citas/cliente/{id}")
+	public ResponseEntity<List<Cita>> getCitaCliente(@PathVariable Long id) {
+		log.debug("REST request to get Cita Cliente: {}", id);
+		List<Cita> citas = citaRepository.findByTratamientoClienteClienteId(id);
+		return ResponseEntity.ok().body(citas);
+	}
+
+	/**
 	 * {@code DELETE  /citas/:id} : delete the "id" cita.
 	 *
 	 * @param id the id of the cita to delete.
