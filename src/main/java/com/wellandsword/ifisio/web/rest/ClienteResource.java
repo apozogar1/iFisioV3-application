@@ -108,6 +108,11 @@ public class ClienteResource {
 	public ResponseEntity<List<Cliente>> getAllClientes(Pageable pageable) {
 		log.debug("REST request to get a page of Clientes");
 		Page<Cliente> page = clienteRepository.findAll(pageable);
+		for (Cliente cliente : page) {
+			cliente.getTratamientoClientes()
+					.forEach(tratamientos -> tratamientos.getCitas().stream().forEach(cita -> cita.getId()));
+		}
+
 		HttpHeaders headers = PaginationUtil
 				.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
 		return ResponseEntity.ok().headers(headers).body(page.getContent());
