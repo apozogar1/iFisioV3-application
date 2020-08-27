@@ -66,32 +66,8 @@ export const medicionRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   },
-  // {
-  //   path: '/clientes/medicion/:id',
-  //   resolve: {
-  //     cliente: ClienteResolve
-  //   },
-  //   component: MedicionComponent,
-  //   data: {
-  //     authorities: [Authority.USER],
-  //     pageTitle: 'iFisioApp.medicion.home.title'
-  //   },
-  //   canActivate: [UserRouteAccessService]
-  // },
-  // {
-  //   path: '/clientes/medicion/:id/view',
-  //   component: MedicionDetailComponent,
-  //   resolve: {
-  //     medicion: MedicionResolve
-  //   },
-  //   data: {
-  //     authorities: [Authority.USER],
-  //     pageTitle: 'iFisioApp.medicion.home.title'
-  //   },
-  //   canActivate: [UserRouteAccessService]
-  // },
   {
-    path: 'clientes/medicion/new',
+    path: 'clientes/:idCliente/medicion/new',
     component: MedicionUpdateComponent,
     data: {
       authorities: [Authority.USER],
@@ -100,7 +76,7 @@ export const medicionRoute: Routes = [
     canActivate: [UserRouteAccessService]
   },
   {
-    path: 'clientes/medicion/:id/edit',
+    path: 'clientes/:idCliente/medicion/:id/edit',
     component: MedicionUpdateComponent,
     resolve: {
       medicion: MedicionResolve

@@ -1,16 +1,14 @@
-import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router';
-import { Observable, of, EMPTY } from 'rxjs';
-import { flatMap } from 'rxjs/operators';
-
-import { Authority } from 'app/shared/constants/authority.constants';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, Resolve, Router, Routes } from '@angular/router';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
+import { Authority } from 'app/shared/constants/authority.constants';
 import { ITratamiento, Tratamiento } from 'app/shared/model/tratamiento.model';
-import { TratamientoService } from './tratamiento.service';
-import { TratamientoComponent } from './tratamiento.component';
-import { TratamientoDetailComponent } from './tratamiento-detail.component';
+import { EMPTY, Observable, of } from 'rxjs';
+import { flatMap } from 'rxjs/operators';
 import { TratamientoUpdateComponent } from './tratamiento-update.component';
+import { TratamientoService } from './tratamiento.service';
+
 
 @Injectable({ providedIn: 'root' })
 export class TratamientoResolve implements Resolve<ITratamiento> {
@@ -36,28 +34,7 @@ export class TratamientoResolve implements Resolve<ITratamiento> {
 
 export const tratamientoRoute: Routes = [
   {
-    path: '',
-    component: TratamientoComponent,
-    data: {
-      authorities: [Authority.USER],
-      pageTitle: 'iFisioApp.tratamiento.home.title'
-    },
-    canActivate: [UserRouteAccessService]
-  },
-  {
-    path: ':id/view',
-    component: TratamientoDetailComponent,
-    resolve: {
-      tratamiento: TratamientoResolve
-    },
-    data: {
-      authorities: [Authority.USER],
-      pageTitle: 'iFisioApp.tratamiento.home.title'
-    },
-    canActivate: [UserRouteAccessService]
-  },
-  {
-    path: 'new',
+    path: 'clientes/cliente/:idCliente/tratamiento/new',
     component: TratamientoUpdateComponent,
     resolve: {
       tratamiento: TratamientoResolve
@@ -69,7 +46,7 @@ export const tratamientoRoute: Routes = [
     canActivate: [UserRouteAccessService]
   },
   {
-    path: ':id/edit',
+    path: 'clientes/cliente/:idCliente/tratamiento/:id/edit',
     component: TratamientoUpdateComponent,
     resolve: {
       tratamiento: TratamientoResolve

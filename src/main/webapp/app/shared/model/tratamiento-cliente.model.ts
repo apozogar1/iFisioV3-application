@@ -10,6 +10,7 @@ export interface ITratamientoCliente {
   expediente?: string;
   citas?: ICita[];
   tratamiento?: ITratamiento;
+  numSesionesDisfrutadas?: number;
   cliente?: ICliente;
 }
 
@@ -17,12 +18,12 @@ export class TratamientoCliente implements ITratamientoCliente {
   constructor(
     public id?: number,
     public numSesiones?: number,
-    public numSesionesDisfrutadas?: number,
     public diagnostico?: string,
     public precioSesion?: number,
     public expediente?: string,
     public citas?: ICita[],
     public tratamiento?: ITratamiento,
+    public numSesionesDisfrutadas?: number,
     public cliente?: ICliente
   ) {}
 }

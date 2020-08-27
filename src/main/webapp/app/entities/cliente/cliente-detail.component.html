@@ -27,7 +27,7 @@
                 <dt><span jhiTranslate="iFisioApp.cliente.companya">Companya</span></dt>
                 <dd>
                     <div *ngIf="cliente.companya">
-                        <a [routerLink]="['/companya', cliente.companya?.id, 'view']">{{ cliente.companya?.id }}</a>
+                        <!-- <a [routerLink]="['/companya', cliente.companya?.id, 'view']">{{ cliente.companya?.id }}</a> -->
                     </div>
                 </dd>
             </dl>
@@ -38,8 +38,8 @@
                 <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
             </button>
 
+            <!-- [routerLink]="['/cliente', cliente.id, 'edit']" -->
             <button type="button"
-                    [routerLink]="['/cliente', cliente.id, 'edit']"
                     class="btn btn-primary">
                 <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
             </button>
