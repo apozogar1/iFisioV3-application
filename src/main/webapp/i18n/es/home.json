@@ -1,7 +1,7 @@
 {
   "home": {
-    "title": "¡Bienvenido, Java Hipster!",
-    "subtitle": "Esta es su página de inicio",
+    "title": "iFisio",
+    "subtitle": "Aplicacion de gestión de agenda para fisioterapia",
     "logged": {
       "message": "Está conectado como \"{{username}}\"."
     },
