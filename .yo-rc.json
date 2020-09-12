@@ -38,6 +38,17 @@
     "enableTranslation": true,
     "nativeLanguage": "es",
     "languages": ["es"],
-    "blueprints": []
+    "blueprints": [],
+    "gcpProjectId": "ifisio-281610",
+    "gcpCloudSqlInstanceName": "",
+    "gcpCloudSqlUserName": "postgre",
+    "gcpCloudSqlDatabaseName": "iFisio",
+    "gaeServiceName": "i-fisio",
+    "gaeLocation": "europe-west",
+    "gaeInstanceClass": "F2",
+    "gaeScalingType": "automatic",
+    "gaeMinInstances": "0",
+    "gaeMaxInstances": "0",
+    "gaeCloudSQLInstanceNeeded": "Y"
   }
 }
