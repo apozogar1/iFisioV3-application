@@ -49,6 +49,16 @@
     "gaeScalingType": "automatic",
     "gaeMinInstances": "0",
     "gaeMaxInstances": "0",
-    "gaeCloudSQLInstanceNeeded": "Y"
+    "gaeCloudSQLInstanceNeeded": "Y",
+    "appsFolders": ["iFisioV3-application"],
+    "directoryPath": "../",
+    "dockerRepositoryName": "ifisio",
+    "dockerPushCommand": "docker push",
+    "kubernetesNamespace": "default",
+    "kubernetesServiceType": "LoadBalancer",
+    "kubernetesUseDynamicStorage": false,
+    "ingressDomain": "",
+    "monitoring": "no",
+    "istio": false
   }
 }

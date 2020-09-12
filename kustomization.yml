@@ -1,0 +1,12 @@
+commonLabels:
+  app.kubernetes.io/genereted-by: JHipster
+
+resources:
+  # Individual apps
+  - ifisio/ifisio-deployment.yml
+  - ifisio/ifisio-service.yml
+  - ifisio/ifisio-postgresql.yml
+  - ifisio/jwt-secret.yml
+# service discovery eureka/consul
+
+patchesJson6902:

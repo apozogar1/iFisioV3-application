@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ifisio
+  namespace: default
+  labels:
+    app: ifisio
+spec:
+  selector:
+    app: ifisio
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
