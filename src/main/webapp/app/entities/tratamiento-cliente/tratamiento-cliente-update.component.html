@@ -16,7 +16,7 @@
                     <label class="form-control-label" jhiTranslate="iFisioApp.tratamientoCliente.tratamiento"
                         for="field_tratamiento">Tratamiento</label>
                     <select class="form-control" id="field_tratamiento" name="tratamiento"
-                        formControlName="tratamiento">
+                        formControlName="tratamiento" (click)="changeTratamiento()">
                         <option [ngValue]="null"></option>
                         <option
                             [ngValue]="tratamientoOption.id === editForm.get('tratamiento')!.value?.id ? editForm.get('tratamiento')!.value : tratamientoOption"

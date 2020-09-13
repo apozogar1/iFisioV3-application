@@ -15,6 +15,8 @@ export class LoginModalService {
     }
     this.isOpen = true;
     const modalRef: NgbModalRef = this.modalService.open(LoginModalComponent);
-    modalRef.result.finally(() => (this.isOpen = false));
+    modalRef.result.finally(() => {
+      this.isOpen = false;
+    });
   }
 }

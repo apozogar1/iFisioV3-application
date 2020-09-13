@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-
-import { ITratamientoCliente, TratamientoCliente } from 'app/shared/model/tratamiento-cliente.model';
-import { TratamientoClienteService } from './tratamiento-cliente.service';
-import { ITratamiento } from 'app/shared/model/tratamiento.model';
+import { ClienteService } from 'app/entities/cliente/cliente.service';
 import { TratamientoService } from 'app/entities/tratamiento/tratamiento.service';
 import { ICliente } from 'app/shared/model/cliente.model';
-import { ClienteService } from 'app/entities/cliente/cliente.service';
+import { ITratamientoCliente, TratamientoCliente } from 'app/shared/model/tratamiento-cliente.model';
+import { ITratamiento } from 'app/shared/model/tratamiento.model';
+import { Observable } from 'rxjs';
+import { TratamientoClienteService } from './tratamiento-cliente.service';
 
 type SelectableEntity = ITratamiento | ICliente;
 
@@ -22,6 +21,7 @@ export class TratamientoClienteUpdateComponent implements OnInit {
   isSaving = false;
   tratamientos: ITratamiento[] = [];
   clientes: ICliente[] = [];
+  cliente: ICliente = {};
 
   editForm = this.fb.group({
     id: [],
@@ -43,15 +43,22 @@ export class TratamientoClienteUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ tratamientoCliente }) => {
-      this.updateForm(tratamientoCliente);
-
       this.tratamientoService.query().subscribe((res: HttpResponse<ITratamiento[]>) => (this.tratamientos = res.body || []));
 
-      this.clienteService.query().subscribe((res: HttpResponse<ICliente[]>) => (this.clientes = res.body || []));
+      this.clienteService.query().subscribe((res: HttpResponse<ICliente[]>) => {
+        this.clientes = res.body || [];
+        this.updateForm(tratamientoCliente);
+      });
     });
   }
 
   updateForm(tratamientoCliente: ITratamientoCliente): void {
+    const clienteSel = this.clientes.find(p => {
+      return p.id + '' === tratamientoCliente?.cliente?.id + '';
+    });
+    if (clienteSel != null) {
+      this.cliente = clienteSel;
+    }
     this.editForm.patchValue({
       id: tratamientoCliente.id,
       numSesiones: tratamientoCliente.numSesiones,
@@ -59,7 +66,7 @@ export class TratamientoClienteUpdateComponent implements OnInit {
       precioSesion: tratamientoCliente.precioSesion,
       expediente: tratamientoCliente.expediente,
       tratamiento: tratamientoCliente.tratamiento,
-      cliente: tratamientoCliente.cliente
+      cliente: clienteSel
     });
   }
 
@@ -106,7 +113,27 @@ export class TratamientoClienteUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: SelectableEntity): any {
+  public trackById(index: number, item: SelectableEntity): any {
     return item.id;
+  }
+
+  public changeTratamiento(): void {
+    const value = this.editForm.get(['tratamiento'])!.value;
+    if (value != null) {
+      this.tratamientoService.find(value.id).subscribe((data: any) => {
+        const trat = new TratamientoCliente();
+        trat.tratamiento = this.editForm.get(['tratamiento'])!.value;
+        trat.numSesiones = data.body.numSesiones;
+        trat.diagnostico = data.body.nombre;
+        trat.expediente = this.editForm.get(['expediente'])!.value;
+        trat.precioSesion = this.editForm.get(['precioSesion'])!.value;
+        trat.cliente = this.cliente;
+
+        this.updateForm(trat);
+      });
+    } else {
+      const trat = new TratamientoCliente();
+      this.updateForm(trat);
+    }
   }
 }

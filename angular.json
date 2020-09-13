@@ -31,6 +31,7 @@
   },
   "defaultProject": "i-fisio",
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "7c429668-3dfc-4431-b25f-028ec97b063e"
   }
 }

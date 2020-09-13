@@ -9,7 +9,7 @@
         </span>
     </h2>
 
-    <p-tabView>
+    <p-tabView [(activeIndex)]="tabActive" (onChange)="changeTab()">
         <p-tabPanel header="Datos personales">
             <jhi-cliente-update></jhi-cliente-update>
         </p-tabPanel>

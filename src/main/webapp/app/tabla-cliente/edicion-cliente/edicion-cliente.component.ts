@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Cliente } from 'app/shared/model/cliente.model';
+import { SharedService } from 'app/shared/shared.service';
 
 @Component({
   selector: 'jhi-edicion-cliente',
@@ -8,8 +9,8 @@ import { Cliente } from 'app/shared/model/cliente.model';
 })
 export class EdicionClienteComponent implements OnInit {
   public cliente: Cliente = new Cliente();
-  constructor(
-    protected activatedRoute: ActivatedRoute) { }
+  public tabActive = 0;
+  constructor(protected activatedRoute: ActivatedRoute, protected sharedService: SharedService) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ cliente }) => {
@@ -17,8 +18,10 @@ export class EdicionClienteComponent implements OnInit {
         this.cliente = cliente;
       }
     });
+    this.tabActive = this.sharedService.tabActive;
   }
 
-
-
+  changeTab(): void {
+    this.sharedService.tabActive = this.tabActive;
+  }
 }
