@@ -1,11 +1,18 @@
 <div>
 
-    <h2 id="page-heading">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="row justify-content-center">
 
-        <span class="ui-float-label">
-            <input id="float-input" type="text" [(ngModel)]="filtro" (keyup)="filtroCliente()" pInputText>
-            <label for="float-input">Username</label>
+                <span class="p-float-label" style="width: 60%;">
+                    <input id="float-input" type="text" pInputText [(ngModel)]="filtro" (keyup)="filtroCliente()"
+                        style="width: 60%;">
+                    <label for="float-input" jhiTranslate="iFisioApp.tablaCliente.buscar">Buscar</label>
+                </span>
 
+            </div>
+        </div>
+        <div class="col-4">
 
             <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-cliente"
                 [routerLink]="['/clientes/cliente/new']">
@@ -14,14 +21,8 @@
                     Create a new Cliente
                 </span>
             </button>
-
-        </span>
-    </h2>
-
-    <jhi-alert-error></jhi-alert-error>
-
-    <jhi-alert></jhi-alert>
-
+        </div>
+    </div>
 
     <div class="table-responsive" id="entities">
         <table class="table table-striped" aria-describedby="page-heading">
@@ -52,7 +53,9 @@
                     <td>{{ cliente.nombre }}</td>
                     <td>{{ cliente.apellidos }}</td>
                     <td>
-                        {{cliente.companya?.nombre}}
+                        <span class="p-tag p-tag-info">
+                            {{cliente.companya?.nombre}}
+                        </span>
                     </td>
                     <td>
                         <span *ngFor="let tratamientoClientes of cliente.tratamientoClientes">

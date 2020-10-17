@@ -6,7 +6,8 @@
       "apellidos": "Apellidos",
       "companyia": "Compañia",
       "activo": "Activo",
-      "citas": "Citas"
+      "citas": "Citas",
+      "buscar": "Buscar..."
     }
   }
 }

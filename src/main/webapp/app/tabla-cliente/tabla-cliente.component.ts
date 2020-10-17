@@ -70,7 +70,6 @@ export class TablaClienteComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loadAll();
     this.registerChangeInClientes();
-
   }
 
   ngOnDestroy(): void {
@@ -116,7 +115,7 @@ export class TablaClienteComponent implements OnInit, OnDestroy {
               }
             });
           }
-        })
+        });
         this.clientes.push(cliente);
       }
     }
@@ -126,7 +125,9 @@ export class TablaClienteComponent implements OnInit, OnDestroy {
   filtroCliente(): void {
     const tablaFiltrada = this.clientesNoFilter.filter(
       cliente =>
-        this.compareFilter(cliente.apellidos, this.filtro)
+        this.compareFilter(cliente.apellidos, this.filtro) ||
+        this.compareFilter(cliente.nombre, this.filtro) ||
+        this.compareFilter(cliente.companya?.nombre, this.filtro)
     );
     this.clientes = tablaFiltrada;
   }
@@ -139,7 +140,7 @@ export class TablaClienteComponent implements OnInit, OnDestroy {
           if (aux?.numSesiones > aux?.numSesionesDisfrutadas) {
             estaActivo = true;
           }
-        })
+        });
         return estaActivo;
       });
     } else {
