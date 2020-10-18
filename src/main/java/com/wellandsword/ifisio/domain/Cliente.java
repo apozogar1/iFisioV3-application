@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,10 +44,10 @@ public class Cliente implements Serializable {
 	@Column(name = "fecha_nacimiento")
 	private Instant fechaNacimiento;
 
-	@OneToMany(mappedBy = "cliente")
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private Set<Medicion> medicions = new HashSet<>();
 
-	@OneToMany(mappedBy = "cliente")
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private Set<TratamientoCliente> tratamientoClientes = new HashSet<>();
 
 	@ManyToOne

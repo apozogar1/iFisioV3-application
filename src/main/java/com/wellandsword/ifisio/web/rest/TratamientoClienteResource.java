@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.wellandsword.ifisio.domain.Cita;
 import com.wellandsword.ifisio.domain.TratamientoCliente;
 import com.wellandsword.ifisio.repository.TratamientoClienteRepository;
 import com.wellandsword.ifisio.web.rest.errors.BadRequestAlertException;
@@ -129,9 +130,7 @@ public class TratamientoClienteResource {
 			Pageable pageable) {
 		log.debug("REST request to get TratamientoCliente : {}", id);
 		List<TratamientoCliente> list = tratamientoClienteRepository.findByClienteId(id);
-		list.forEach(p -> {
-			p.getCitas().stream().forEach(x -> x.getFechaHoraCita());
-		});
+		list.forEach(p -> p.getCitas().stream().forEach(Cita::getFechaHoraCita));
 		return ResponseEntity.ok().body(list);
 	}
 

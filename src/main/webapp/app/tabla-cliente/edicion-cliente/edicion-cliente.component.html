@@ -13,7 +13,7 @@
         <p-tabPanel header="Datos personales">
             <jhi-cliente-update></jhi-cliente-update>
         </p-tabPanel>
-        <p-tabPanel header="Tratamientos">
+        <p-tabPanel header="Tratamientos" [disabled]="cliente?.id == null">
             <jhi-tratamiento-cliente></jhi-tratamiento-cliente>
         </p-tabPanel>
         <!-- <p-tabPanel header="Mediciones">
