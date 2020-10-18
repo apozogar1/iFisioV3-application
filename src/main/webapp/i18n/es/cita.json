@@ -3,7 +3,7 @@
     "cita": {
       "home": {
         "title": "Citas",
-        "createLabel": "Crear nuevo Cita",
+        "createLabel": "Crear Cita",
         "createOrEditLabel": "Crear o editar Cita",
         "notFound": "Ningún Citas encontrado"
       },

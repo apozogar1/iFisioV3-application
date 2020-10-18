@@ -9,8 +9,7 @@ import { Subscription } from 'rxjs';
 import { TratamientoClienteDeleteDialogComponent } from './tratamiento-cliente-delete-dialog.component';
 import { TratamientoClienteService } from './tratamiento-cliente.service';
 import { ICliente } from 'app/shared/model/cliente.model';
-
-
+import * as moment from 'moment';
 
 @Component({
   selector: 'jhi-tratamiento-cliente',
@@ -48,11 +47,9 @@ export class TratamientoClienteComponent implements OnInit, OnDestroy {
     this.activatedRoute.data.subscribe(({ cliente }) => {
       if (cliente != null && cliente.id != null) {
         this.cliente = cliente;
-        this.tratamientoClienteService
-          .findByCliente(cliente.id)
-          .subscribe((res: HttpResponse<ITratamientoCliente[]>) => {
-            this.paginateTratamientoClientes(res.body);
-          });
+        this.tratamientoClienteService.findByCliente(cliente.id).subscribe((res: HttpResponse<ITratamientoCliente[]>) => {
+          this.paginateTratamientoClientes(res.body);
+        });
       }
     });
   }
@@ -104,7 +101,16 @@ export class TratamientoClienteComponent implements OnInit, OnDestroy {
   protected paginateTratamientoClientes(data: ITratamientoCliente[] | null): void {
     if (data) {
       for (let i = 0; i < data.length; i++) {
-        this.tratamientoClientes.push(data[i]);
+        const tratCliente = data[i];
+        if (tratCliente != null) {
+          tratCliente.numSesionesDisfrutadas = 0;
+          tratCliente.citas?.forEach(cita => {
+            if (moment(new Date()).isAfter(cita.fechaHoraCita) && tratCliente.numSesionesDisfrutadas != null) {
+              tratCliente.numSesionesDisfrutadas++;
+            }
+          });
+        }
+        this.tratamientoClientes.push(tratCliente);
       }
     }
   }

@@ -1,20 +1,20 @@
 {
   "iFisioApp": {
-    "companya": {
+    "Companya": {
       "home": {
-        "title": "Companyas",
-        "createLabel": "Crear nuevo Companya",
-        "createOrEditLabel": "Crear o editar Companya",
-        "notFound": "Ningún Companyas encontrado"
+        "title": "Compañias",
+        "createLabel": "Crear Compañia",
+        "createOrEditLabel": "Crear o editar Compañia",
+        "notFound": "Ningún Compañias encontrado"
       },
-      "created": "Un nuevo Companya ha sido creado con el identificador {{ param }}",
-      "updated": "Un Companya ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Companya ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Compañia ha sido creado con el identificador {{ param }}",
+      "updated": "Un Compañia ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Compañia ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Companya {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Compañia {{ id }}?"
       },
       "detail": {
-        "title": "Companya"
+        "title": "Compañia"
       },
       "nombre": "Nombre",
       "precioSesion": "Precio Sesion",

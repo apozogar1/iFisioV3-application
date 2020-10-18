@@ -3,7 +3,7 @@
     "tratamientoCliente": {
       "home": {
         "title": "Tratamiento Clientes",
-        "createLabel": "Crear nuevo Tratamiento Cliente",
+        "createLabel": "Crear Tratamiento Cliente",
         "createOrEditLabel": "Crear o editar Tratamiento Cliente",
         "notFound": "Ningún Tratamiento Clientes encontrado"
       },
@@ -21,6 +21,7 @@
       "precioSesion": "Precio Sesion",
       "expediente": "Expediente",
       "cita": "Cita",
+      "citas": "Citas",
       "tratamiento": "Tratamiento",
       "cliente": "Cliente"
     }

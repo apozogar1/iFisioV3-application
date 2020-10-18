@@ -1,6 +1,6 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="iFisioApp.tratamientoCliente.home.title">Tratamiento Clientes</span>
+        <!-- <span jhiTranslate="iFisioApp.tratamientoCliente.home.title">Tratamiento Clientes</span> -->
 
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-tratamiento-cliente"
             [routerLink]="['tratamientoCliente','new']">
@@ -44,6 +44,10 @@
                             jhiTranslate="iFisioApp.tratamientoCliente.expediente">Expediente</span>
                         <fa-icon icon="sort"></fa-icon>
                     </th>
+                    <th scope="col" jhiSortBy="expediente"><span
+                            jhiTranslate="iFisioApp.tratamientoCliente.citas">Citas</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
                     <!-- <th scope="col"  jhiSortBy="cliente.id"><span jhiTranslate="iFisioApp.tratamientoCliente.cliente">Cliente</span> <fa-icon icon="sort"></fa-icon></th> -->
                     <th scope="col"></th>
                 </tr>
@@ -64,6 +68,9 @@
                     <td>{{ tratamientoCliente.numSesiones }}</td>
                     <td>{{ tratamientoCliente.precioSesion }}</td>
                     <td>{{ tratamientoCliente.expediente }}</td>
+                    <td>
+                        {{tratamientoCliente?.numSesionesDisfrutadas}}/{{tratamientoCliente?.numSesiones}}
+                    </td>
                     <!-- <td>
                         <div *ngIf="tratamientoCliente.cliente">
                             <a [routerLink]="['/cliente', tratamientoCliente.cliente?.id, 'view']" >{{ tratamientoCliente.cliente?.id }}</a>

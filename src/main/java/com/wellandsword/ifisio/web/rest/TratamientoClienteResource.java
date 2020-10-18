@@ -129,6 +129,9 @@ public class TratamientoClienteResource {
 			Pageable pageable) {
 		log.debug("REST request to get TratamientoCliente : {}", id);
 		List<TratamientoCliente> list = tratamientoClienteRepository.findByClienteId(id);
+		list.forEach(p -> {
+			p.getCitas().stream().forEach(x -> x.getFechaHoraCita());
+		});
 		return ResponseEntity.ok().body(list);
 	}
 

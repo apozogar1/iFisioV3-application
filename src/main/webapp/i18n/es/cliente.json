@@ -3,7 +3,7 @@
     "cliente": {
       "home": {
         "title": "Clientes",
-        "createLabel": "Crear nuevo Cliente",
+        "createLabel": "Crear Cliente",
         "createOrEditLabel": "Crear o editar Cliente",
         "notFound": "Ningún Clientes encontrado"
       },

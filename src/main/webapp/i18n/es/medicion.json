@@ -3,7 +3,7 @@
     "medicion": {
       "home": {
         "title": "Medicions",
-        "createLabel": "Crear nuevo Medicion",
+        "createLabel": "Crear Medicion",
         "createOrEditLabel": "Crear o editar Medicion",
         "notFound": "Ningún Medicions encontrado"
       },

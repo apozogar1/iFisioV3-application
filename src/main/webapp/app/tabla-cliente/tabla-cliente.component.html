@@ -1,25 +1,32 @@
 <div>
+    <h2 id="page-heading">
+        <span jhiTranslate="iFisioApp.tablaCliente.clientes">Clientes</span>
+    </h2>
 
-    <div class="row justify-content-center">
-        <div class="col-8">
-            <div class="row justify-content-center">
-                <span class="p-input-icon-left" style="width: 60%;">
+    <div class="p-grid vertical-container">
+        <div class="p-col p-as-start">
+            <div class="box"></div>
+        </div>
+        <div class="p-col p-as-center">
+            <div class="box">
+                <span class="p-input-icon-left" style="width: 100%;">
                     <i class="pi pi-search"></i>
                     <input id="input" type="text" pInputText [(ngModel)]="filtro" (keyup)="filtroCliente()"
                         placeholder="{{'iFisioApp.tablaCliente.buscar' | translate}}"
-                        style="width: 60%; padding-left: 25px;">
+                        style=" padding-left: 25px; width: 100%;">
                 </span>
             </div>
         </div>
-        <div class="col-4">
-
-            <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-cliente"
-                [routerLink]="['/clientes/cliente/new']">
-                <fa-icon icon="plus"></fa-icon>
-                <span jhiTranslate="iFisioApp.cliente.home.createLabel">
-                    Create a new Cliente
-                </span>
-            </button>
+        <div class="p-col p-as-end">
+            <div class="box">
+                <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-cliente"
+                    [routerLink]="['/clientes/cliente/new']">
+                    <fa-icon icon="plus"></fa-icon>
+                    <span jhiTranslate="iFisioApp.cliente.home.createLabel">
+                        Create a new Cliente
+                    </span>
+                </button>
+            </div>
         </div>
     </div>
 

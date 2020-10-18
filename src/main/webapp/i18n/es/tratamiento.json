@@ -3,7 +3,7 @@
     "tratamiento": {
       "home": {
         "title": "Tratamientos",
-        "createLabel": "Crear nuevo Tratamiento",
+        "createLabel": "Crear Tratamiento",
         "createOrEditLabel": "Crear o editar Tratamiento",
         "notFound": "Ningún Tratamientos encontrado"
       },
