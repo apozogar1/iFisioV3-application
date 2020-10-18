@@ -3,13 +3,12 @@
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="row justify-content-center">
-
-                <span class="p-float-label" style="width: 60%;">
-                    <input id="float-input" type="text" pInputText [(ngModel)]="filtro" (keyup)="filtroCliente()"
-                        style="width: 60%;">
-                    <label for="float-input" jhiTranslate="iFisioApp.tablaCliente.buscar">Buscar</label>
+                <span class="p-input-icon-left" style="width: 60%;">
+                    <i class="pi pi-search"></i>
+                    <input id="input" type="text" pInputText [(ngModel)]="filtro" (keyup)="filtroCliente()"
+                        placeholder="{{'iFisioApp.tablaCliente.buscar' | translate}}"
+                        style="width: 60%; padding-left: 25px;">
                 </span>
-
             </div>
         </div>
         <div class="col-4">
@@ -53,7 +52,7 @@
                     <td>{{ cliente.nombre }}</td>
                     <td>{{ cliente.apellidos }}</td>
                     <td>
-                        <span class="p-tag p-tag-info">
+                        <span class="p-tag p-tag-{{cliente.companya?.estilo}}">
                             {{cliente.companya?.nombre}}
                         </span>
                     </td>

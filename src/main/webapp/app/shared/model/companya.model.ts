@@ -4,9 +4,16 @@ export interface ICompanya {
   id?: number;
   nombre?: string;
   precioSesion?: number;
+  estilo?: string;
   clientes?: ICliente[];
 }
 
 export class Companya implements ICompanya {
-  constructor(public id?: number, public nombre?: string, public precioSesion?: number, public clientes?: ICliente[]) {}
+  constructor(
+    public id?: number,
+    public nombre?: string,
+    public precioSesion?: number,
+    public estilo?: string,
+    public clientes?: ICliente[]
+  ) {}
 }

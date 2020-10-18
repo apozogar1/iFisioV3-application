@@ -93,7 +93,7 @@ export class AgendaComponent implements OnInit, OnDestroy {
   }
 
   handleDateClick(e: any): void {
-    if (this.tratamientoSel != null && this.tratamientoSel.id != null && this.validateCita(e.date, e.id)) {
+    if (this.tratamientoSel != null && this.tratamientoSel.id != null && this.validateCita(e.date, e.id, false)) {
       const startCita = moment(e.date);
       const endCita = moment(e.date).add(1, 'hours');
       const cita = { fechaHoraCita: startCita, fechaHoraCitaFin: endCita, tratamientoCliente: this.tratamientoSel };
@@ -127,7 +127,7 @@ export class AgendaComponent implements OnInit, OnDestroy {
 
   handleEventDragStop(info: any): void {
     const cita = this.citas.find((citaAux: ICita) => citaAux.id === +info.event.id);
-    if (cita != null && this.validateCita(info.event.start, +info.event.id)) {
+    if (cita != null && this.validateCita(info.event.start, +info.event.id, true)) {
       cita.fechaHoraCita = moment(info.event.start);
       cita.fechaHoraCitaFin = moment(info.event.end);
       this.updateCita(cita);
@@ -216,7 +216,7 @@ export class AgendaComponent implements OnInit, OnDestroy {
     }
   }
 
-  validateCita(dateStr: string | Date, id: any): boolean {
+  validateCita(dateStr: string | Date, id: any, update: boolean): boolean {
     let isOk = true;
 
     // Que no se creen dos citas en el mismo
@@ -231,7 +231,7 @@ export class AgendaComponent implements OnInit, OnDestroy {
     }
 
     // No tienes mas citas
-    if (this.numDiasPendientes < 1) {
+    if (this.numDiasPendientes < 1 && !update) {
       this.messageService.add({ severity: 'warn', summary: 'Validación', detail: 'Ya no le quedan mas citas.' });
       isOk = false;
     }

@@ -1,7 +1,8 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-companya-heading" jhiTranslate="iFisioApp.companya.home.createOrEditLabel">Create or edit a Companya</h2>
+            <h2 id="jhi-companya-heading" jhiTranslate="iFisioApp.companya.home.createOrEditLabel">Create or edit a
+                Companya</h2>
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
@@ -12,15 +13,22 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="iFisioApp.companya.nombre" for="field_nombre">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" id="field_nombre"
-                           formControlName="nombre"/>
+                    <label class="form-control-label" jhiTranslate="iFisioApp.companya.nombre"
+                        for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre" formControlName="nombre" />
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="iFisioApp.companya.precioSesion" for="field_precioSesion">Precio Sesion</label>
+                    <label class="form-control-label" jhiTranslate="iFisioApp.companya.precioSesion"
+                        for="field_precioSesion">Precio Sesion</label>
                     <input type="number" class="form-control" name="precioSesion" id="field_precioSesion"
-                           formControlName="precioSesion"/>
+                        formControlName="precioSesion" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="iFisioApp.companya.estilo"
+                        for="field_estilo">Estilo</label>
+                    <input type="text" class="form-control" name="estilo" id="field_estilo"
+                        formControlName="estilo" />
                 </div>
             </div>
 
@@ -29,7 +37,8 @@
                     <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
 
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
+                    class="btn btn-primary">
                     <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>

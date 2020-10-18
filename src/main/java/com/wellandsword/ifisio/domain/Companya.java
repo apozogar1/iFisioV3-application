@@ -32,6 +32,9 @@ public class Companya implements Serializable {
 
 	@Column(name = "precio_sesion")
 	private Float precioSesion;
+	
+	@Column(name = "estilo")
+	private String estilo;
 
 	@OneToMany(mappedBy = "companya")
 	private Set<Cliente> clientes = new HashSet<>();
@@ -96,8 +99,18 @@ public class Companya implements Serializable {
 	public void setClientes(Set<Cliente> clientes) {
 		this.clientes = clientes;
 	}
+	
+	
 	// jhipster-needle-entity-add-getters-setters - JHipster will add getters and
 	// setters here, do not remove
+
+	public String getEstilo() {
+		return estilo;
+	}
+
+	public void setEstilo(String estilo) {
+		this.estilo = estilo;
+	}
 
 	@Override
 	public boolean equals(Object o) {

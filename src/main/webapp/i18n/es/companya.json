@@ -18,6 +18,7 @@
       },
       "nombre": "Nombre",
       "precioSesion": "Precio Sesion",
+      "estilo": "Estilo",
       "cliente": "Cliente"
     }
   }
